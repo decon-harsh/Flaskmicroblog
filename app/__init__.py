@@ -1,6 +1,6 @@
 from flask import Flask, render_template,url_for,flash,redirect,request
-from forms import Registration,Login
-app = Flask(__name__,template_folder="/home/harsh/microblog/app/template")
+from forms import Registration,Login,Login_via_email
+app = Flask(__name__)
 app.config['SECRET_KEY']='795f58bed45eec911428443e6d6c6c77'
 #posts
 posts=[
@@ -45,7 +45,7 @@ posts=[
 
 @app.route('/')
 def hello_world():
-    return '<body>Hey welcome to my project page !</body>'
+    return render_template("Root.html")
 
 @app.route('/home')
 def home():
@@ -54,10 +54,20 @@ def home():
 @app.route('/about')
 def about():
     return render_template('about.html')
-@app.route('/login')
+@app.route('/login',methods=['GET','POST'])
 def login():
     form=Login()
+    if form.validate_on_submit():
+        flash(f"Welcome {form.username.data},Long time no see!",'info')
+        return redirect(url_for('home'))
     return render_template('login.html',form=form)
+@app.route('/login_via_email',methods=['GET','POST'])
+def login_via_email():
+    form=Login_via_email()
+    if form.validate_on_submit():
+        flash(f"Welcome {form.email.data}, Long time no see!",'info')
+        return redirect(url_for('home'))
+    return render_template('login_via_email.html',form=form)   
 @app.route('/register',methods=['GET','POST'])
 def register():
     form=Registration()
