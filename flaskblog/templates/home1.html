@@ -15,29 +15,23 @@
   height: 100%;
   width: 100%;
 }
-
 .bg {
   /* The image used */
   background-image: url("/static/image/snowyhills.jpg");
 
   /* Full height */
-  height: 200%;
+  height: 120%;
   width: 100%;
 
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-.topnav-right{
-    float: right
-
-}
-</style> 
+}   
+</style>
 <body>
   <div class="bg">
-
-    <!-- navigation bar -->
+      <!-- navigation bar -->
         <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
           <span class="navbar-text"><b><font color="white">Flask Blog</font></b></span>
             <ul class="navbar-nav">
@@ -55,21 +49,16 @@
             </ul>
 
             <div class="collapse navbar-collapse" id="navbarToggle">
-                <div class="navbar-nav mr-auto">
-                  <a class="nav-item nav-link" href="/">Root</a>
-                  <a class="nav-item nav-link" href="/home">Home</a>
-                  <a class="nav-item nav-link" href="/about">About</a>
-                </div>
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="/">Root</a>
+                <a class="nav-item nav-link" href="/home">Home</a>
+                <a class="nav-item nav-link" href="/about">About</a>
+              </div>
 
               
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
-                {%if current_user.is_authenticated%}
                 <a class="nav-item nav-link" href="/logout">Logout</a>
-                {%else%}
-                <a class="nav-item nav-link" href="/login">Login</a>
-                <a class="nav-item nav-link" href="/register">Register</a>
-                {%endif%}
               </div>
             </div>
         </nav>
@@ -79,6 +68,9 @@
       <main role="main" class="container">
           <div class="row">
             <div class="col-md-8">
+              <br>
+              <br>
+              <br>
               {%with messages=get_flashed_messages(with_categories=true)%}
               {%if messages%}
                 {%for category,message in messages%}
@@ -88,66 +80,66 @@
                 {%endfor%}
               {%endif%}
               {%endwith%}
-            <div class="container-fluid p-3 my-3 bg-primary text-white">
+              <div class="container-fluid p-3 my-3 bg-primary text-white">
                 <h1><font color="white"><center>Your Blogs</center></font></h1>
-                  <!-- <p>This container has a border and some extra padding and margins.</p> -->
-            </div>
-    
-            <article class="media content-section">
-            <div class="media-body">
-              <div class="article-metadata">
-                <a class="mr-2" href="#">Harsh Singh</a>
-                <small class="text-muted">April 28,2020</small>
-              </div>  
-            <h2><a class="article-title" href="#">Blog post 1</a></h2>
-            <p class="article-content">First post content</p>
-            </div>
-            </article>
-    
-            <article class="media content-section">
-            <div class="media-body">
-              <div class="article-metadata">
-                <a class="mr-2" href="#">Raju Madharchod</a>
-                <small class="text-muted">September 15,2020</small>
+              <!-- <p>This container has a border and some extra padding and margins.</p> -->
               </div>
-              <h2><a class="article-title" href="#">Vlog bnate hai</a></h2>
-              <p class="article-content">Yaar 9wa BT mat de</p>
-            </div>
-            </article>
     
-        <article class="media content-section">
-            <div class="media-body">
-            <div class="article-metadata">
-                <a class="mr-2" href="#">9wa 9igga bosdike</a>
-                <small class="text-muted">November 16,2020</small>
-            </div>
-            <h2><a class="article-title" href="#">Raghubar Das ki maa ka bhosda , Raghubar Das ki maa ki chut</a></h2>
-            <p class="article-content">Corona kiya hai</p>
-            </div>
-        </article>
+              <article class="media content-section">
+                <div class="media-body">
+                  <div class="article-metadata">
+                    <a class="mr-2" href="#">Harsh Singh</a>
+                    <small class="text-muted">April 28,2020</small>
+                  </div>
+                  <h2><a class="article-title" href="#">Blog post 1</a></h2>
+                  <p class="article-content">First post content</p>
+                </div>
+              </article>
     
-        <article class="media content-section">
-            <div class="media-body">
-            <div class="article-metadata">
-                <a class="mr-2" href="#">Tumlog CM ko har baar bhul jata hai</a>
-                <small class="text-muted">August 3,2020</small>
-            </div>
-            <h2><a class="article-title" href="#">Paisa kama liye be</a></h2>
-            <p class="article-content">Abe tumlog abhi tak golden rule nhi sikha hai</p>
-            </div>
-        </article>
+              <article class="media content-section">
+                <div class="media-body">
+                  <div class="article-metadata">
+                    <a class="mr-2" href="#">Raju Madharchod</a>
+                    <small class="text-muted">September 15,2020</small>
+                  </div>
+                  <h2><a class="article-title" href="#">Vlog bnate hai</a></h2>
+                  <p class="article-content">Yaar 9wa BT mat de</p>
+                </div>
+              </article>
     
-        <article class="media content-section">
-            <div class="media-body">
-            <div class="article-metadata">
-                <a class="mr-2" href="#">Shubham Parteek Skp yo</a>
-                <small class="text-muted">November 20,2020</small>
-            </div>
-            <h2><a class="article-title" href="#">Sonam(Hypo) chahiye yaar</a></h2>
-            <p class="article-content">Is this his life ?</p>
-            </div>
-        </article>
-  
+              <article class="media content-section">
+                <div class="media-body">
+                  <div class="article-metadata">
+                    <a class="mr-2" href="#">9wa 9igga bosdike</a>
+                    <small class="text-muted">November 16,2020</small>
+                  </div>
+                  <h2><a class="article-title" href="#">Raghubar Das ki maa ka bhosda , Raghubar Das ki maa ki chut</a></h2>
+                  <p class="article-content">Corona kiya hai</p>
+                </div>
+              </article>
+    
+              <article class="media content-section">
+                <div class="media-body">
+                  <div class="article-metadata">
+                    <a class="mr-2" href="#">Tumlog CM ko har baar bhul jata hai</a>
+                    <small class="text-muted">August 3,2020</small>
+                  </div>
+                  <h2><a class="article-title" href="#">Paisa kama liye be</a></h2>
+                  <p class="article-content">Abe tumlog abhi tak golden rule nhi sikha hai</p>
+                </div>
+              </article>
+    
+              <article class="media content-section">
+                <div class="media-body">
+                  <div class="article-metadata">
+                    <a class="mr-2" href="#">Shubham Parteek Skp yo</a>
+                    <small class="text-muted">November 20,2020</small>
+                  </div>
+                  <h2><a class="article-title" href="#">Sonam(Hypo) chahiye yaar</a></h2>
+                  <p class="article-content">Is this his life ?</p>
+                </div>
+              </article>
+            </div>  
 
           <!-- Sidebar -->
             <div class="col-md-4">
@@ -166,10 +158,7 @@
                 </p>
               </div>
             </div>
-      </main>
-  </div>    
-
-    
-  
+      </main> 
+  </div>
 </body>
 </html>

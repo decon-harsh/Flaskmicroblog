@@ -57,7 +57,7 @@ def home():
         return redirect(url_for("register"))
 @app.route('/about')
 def about():
-    return render_template('about1.html')
+    return render_template('about.html')
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -97,7 +97,8 @@ def register():
         user=User(username=form.username.data,email=form.email.data,password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash(f'Account created for {form.username.data}!','success')
+        flash(f"Congratulations!")
+        flash(f"Account created for {form.username.data}!",'success')
         flash(f"You can now log in!",'success')
         return redirect(url_for('login'))        
     return render_template("register.html",form=form) 
