@@ -6,6 +6,9 @@
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
  
      <!-- Bootstrap CSS -->
+     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
     <link  rel="stylesheet"type="text/css" href="{{url_for('static',filename='main.css') }}">
@@ -13,7 +16,7 @@
 <body>
 
     <!-- navigation bar -->
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
           <span class="navbar-text"><b><font color="white">Flask Blog</font></b></span>
             <ul class="navbar-nav">
               <li class="nav-item active">
@@ -58,8 +61,9 @@
               {%with messages=get_flashed_messages(with_categories=true)%}
                 {%if messages%}
                   {%for category,message in messages%}
-                    <div class="alert alert-{{category}}">
-                      {{message}}
+                    <div class="alert alert-{{category}} alert-dismissible">
+                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <strong>{{message}}</strong>
                     </div>
                   {%endfor%}
                 {%endif%}
@@ -69,9 +73,6 @@
 
           <!-- Sidebar -->
             <div class="col-md-4">
-              <br>
-              <br>
-              <br>
               <div class="content-section">
                 <h3>Our Sidebar</h3>
                 <p class='text-muted'>You can put any information here you'd like.

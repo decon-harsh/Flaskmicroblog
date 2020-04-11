@@ -53,8 +53,9 @@ def home():
     if current_user.is_authenticated:
         return render_template('home1.html',posts=posts)
     else:
-        # flash(f"test",'danger')
-        return redirect(url_for("register"))
+        flash(f"You have to Login first",'warning')
+        return redirect(url_for("login"))
+
 @app.route('/about')
 def about():
     return render_template('about.html')
