@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <!-- Bootstrap CSS -->
+     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <link  rel="stylesheet"type="text/css" href="{{url_for('static',filename='main.css') }}">
+    <title>{{title}}</title>
+</head>
+<style>
+.content-section
+{
+  margin-left: 5rem;
+  margin-right: 5rem;
+  border: none;
+}
+.my-card
+{
+  margin-right:5rem ;
+  margin-left:5rem ;
+  margin-top:1.5rem ;
+}
+.open-button
+{
+  background-color:green;
+  color:white;
+  padding: 16px 20px;
+  border:none;
+  cursor:pointer;
+  opacity:1;
+  position: fixed;
+  bottom: 23px;
+  right:28px;
+  width:290px;
+  transform: scale(0.9);
+
+}
+.close-button
+{
+  background-color:red;
+  color:white;
+  padding: 16px 20px;
+  border:none;
+  cursor:pointer;
+  opacity:1;
+  position: fixed;
+  bottom: 23px;
+  right:28px;
+  width:290px;
+  transform: scale(0.9);
+
+}
+.open-button:hover{transform:scale(1);}
+.close-button:hover{transform:scale(1);}
+</style>
+<script>
+  function show(target) {
+    document.getElementById(target).style.display ="block";
+  }
+  function hide(target) {
+    document.getElementById(target).style.display = 'none';
+  }
+  function hideButton(){ 
+    // var target=document.getElementById("myForm");
+    var x = document.getElementById("open");
+    x.style.display = "none";
+
+    var x = document.getElementById("close");
+    x.style.display = "";}
+    // target.style.display="none;"} 
+  function showButton(){ 
+    // var target=document.getElementById("myForm");
+    var x = document.getElementById("open");
+    x.style.display = "";
+
+    var x = document.getElementById("close");
+    x.style.display = "none";}
+    // target.style.display="block";}   
+
+</script>
+<body>
+        <!-- navigation bar -->
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+            <span class="navbar-text"><b><font color="white">Flask Blog</font></b></span>
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#"></a>
+                </li>
+  
+                <li class="nav-item active">
+                  <a class="nav-link" href="#"></a>
+                </li>
+  
+                <li class="nav-item active">
+                  <a class="nav-link" href="#"></a>
+                </li>
+              </ul>
+  
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                  <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="/">Root</a>
+                    <a class="nav-item nav-link" href="/home">Home</a>
+                    <a class="nav-item nav-link" href="/about">About</a>
+                  </div>
+  
+                
+                    <!-- Navbar Right Side -->
+                 <div class="navbar-nav">
+                    {%if current_user.is_authenticated%}
+                    <a class="nav-item nav-link" href="/account">Account</a>
+                    <a class="nav-item nav-link" href="/logout">Logout</a>
+                    {%else%}
+                    <a class="nav-item nav-link" href="/login">Login</a>
+                    <a class="nav-item nav-link" href="/register">Register</a>
+                    {%endif%}
+                 </div>
+                </div>
+            </div>
+        </nav>
+        <!-- NavBar ends -->
+
+        <!--Flash Script starts-->
+        <div class="col-md-8 center">
+          {%with messages=get_flashed_messages(with_categories=true)%}
+            {%if messages%}
+              {%for category,message in messages%}
+                <div class="alert alert-{{category}} alert dismissible" style="margin-right:5rem ;margin-left:5rem ;margin-top:1.5rem ">
+                  <a href ="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>{{message}}</strong>
+                </div>
+              {%endfor%}
+            {%endif%}
+          {%endwith%}
+        </div>
+        <!--Flash Script ends-->
+
+        <div class="card my-card">
+          <div class="media">
+            <div class="media-body">
+              <h4 class="media-heading"><b>{{current_user.username|capitalize}}</b></h4>
+              <div class="container"> 
+                <p><small style="font-weight: lighter;color: gray;"><a href="/update"> Bio</a></small></p>
+                <p>{{current_user.bio|capitalize}}</p>
+              </div>
+            </div>
+            <div class="media-right">
+              <img src= "{{image_file}}" class="img-thumbnail" style="height:135px;width:270px">
+            </div>
+          </div>
+        </div>
+        
+        <button id="open" class="close-button " onclick="hide('myForm');hideButton()">Done Updating!</button>
+        <button id="close" class="open-button" onclick="show('myForm');showButton()">Update your details</button>
+        <div class ="content-section">
+          <form method ="POST" action="" id="myForm" style="display: none;">
+              {{form.hidden_tag()}}
+              <fieldset class="form-group">
+                      <legend class="border-bottom mb-4">Update</legend>
+                      <div class="form-group">
+                          {{ form.username.label(class="form-control-label")  }}
+  
+                          {%if form.username.errors%}
+                              {{form.username(class="form-control form-control-lg is-invalid")}}
+                              <div class="invalid-feedback">
+                                  {%for error in form.username.errors%}
+                                      <span>{{error}}</span>
+                                  {%endfor%}    
+                              </div>
+                          {%else%}
+                              {{ form.username(class="form-control form-control-lg")  }}
+                          {%endif%}    
+                      </div>
+                      <div class="form-group">
+                          {{ form.email.label(class="form-control-label")  }}
+                          
+                          {%if form.email.errors%}
+                              {{form.email(class="form-control form-control-lg is-invalid")}}
+                              <div class="invalid-feedback">
+                                  {%for error in form.email.errors%}
+                                      <span>{{error}}</span>
+                                  {%endfor%}    
+                              </div>
+                          {%else%}
+                              {{ form.email(class="form-control form-control-lg")  }}
+                          {%endif%}                      
+                      </div>
+                      <div class="form-group">
+                        {{ form.bio.label(class="form-control-label")  }}
+                        {{ form.bio(class="form-control form-control-lg")  }}
+                      </div>
+              </fieldset>
+              <div class="form-group">
+                  {{form.submit(class="btn btn-outline-info")}}
+              </div>
+          </form>
+      </div>
+      
+
+      
+</body>
+</html>

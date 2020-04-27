@@ -10,18 +10,31 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-    <link  rel="stylesheet"type="text/css" href="/static/home.css">
+     <link  rel="stylesheet"type="text/css" href="/static/home.css">
+     <script src="{{url_for('static',filename='home.js')}}"></script>
+    <title>{{title}}</title>
 </head>
 <style>
     body, html {
   height: 100%;
   width: 100%;
 }
-.bg {
+.bg-light {
   /* The image used */
   background-image: url("/static/image/snowyhills.jpg");
+  /* Full height */
+  top: 0;
+  height: 111%;
+  width: 100%;
 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bg-dark {
+  /* The image used */
+  background-image: url("/static/image/hitmandark.jpg");
   /* Full height */
   height: 111%;
   width: 100%;
@@ -30,12 +43,37 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}   
+}
+script{
+  display: inline;
+}
+.onit{
+  display: flex;
+  border: none;
+  outline: none;
+  background-color:rgb(47, 47, 247);
+  cursor: pointer;
+  font-size: 12px;
+  color: white;
+  overflow: hidden;
+}
+
+.buttom{
+  background-color: black;
+  color: yellow;
+  display: flex;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  overflow: hidden;
+  font-size: 12px;
+  range: 1.1;
+}  
 </style>
 <body>
-  <div class="bg">
+  <div class="bg-light" id="theme">
       <!-- navigation bar -->
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary" id="navbar-theme">
           <span class="navbar-text"><b><font color="white">Flask Blog</font></b></span>
             <ul class="navbar-nav">
               <li class="nav-item active">
@@ -53,15 +91,18 @@
 
             <div class="collapse navbar-collapse" id="navbarToggle">
               <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="/">Root</a>
-                <a class="nav-item nav-link" href="/home">Home</a>
-                <a class="nav-item nav-link" href="/about">About</a>
+                <a class="nav-item nav-link" href="#"><b><font color="white"></font></b></a>
+                <a class="nav-item nav-link" href="#"><b><font color="white"></font></b></a>
+                <a class="nav-item nav-link" href="/"><b><font color="white">Root</font></b></a>
+                <a class="nav-item nav-link" href="/home"><b><font color="white">Home</font></b></a>
+                <a class="nav-item nav-link" href="/about"><b><font color="white">About</font></a>
               </div>
 
               
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/logout">Logout</a>
+                <a class="nav-item nav-link" href="/account"><b><font color="white">Account</font></b></a>
+                <a class="nav-item nav-link" href="/logout"><b><font color="white">Logout</font></b></a>
               </div>
             </div>
         </nav>
@@ -84,71 +125,28 @@
                 {%endfor%}
               {%endif%}
               {%endwith%}
-              <div class="container-fluid p-3 my-3 bg-primary text-white">
+              <div class="container-fluid p-3 my-3 bg-primary text-white" id="mydiv">
                 <h1><font color="white"><center>Your Blogs</center></font></h1>
               <!-- <p>This container has a border and some extra padding and margins.</p> -->
               </div>
-    
-              <article class="media content-section">
-                <div class="media-body">
+            {%for post in posts%}
+            <article class="media content-section">
+                <div class="media-body"> 
                   <div class="article-metadata">
-                    <a class="mr-2" href="#">Harsh Singh</a>
-                    <small class="text-muted">April 28,2020</small>
+                      <a class="mr-2" href="#">{{ post.author }}</a>
+                      <small class="text-muted">{{ post.date }}</small>
                   </div>
-                  <h2><a class="article-title" href="#">Blog post 1</a></h2>
-                  <p class="article-content">First post content</p>
+                  <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                  <p class="article-content">{{ post.content }}</p>
                 </div>
-              </article>
-    
-              <article class="media content-section">
-                <div class="media-body">
-                  <div class="article-metadata">
-                    <a class="mr-2" href="#">Raju Madharchod</a>
-                    <small class="text-muted">September 15,2020</small>
-                  </div>
-                  <h2><a class="article-title" href="#">Vlog bnate hai</a></h2>
-                  <p class="article-content">Yaar 9wa BT mat de</p>
-                </div>
-              </article>
-    
-              <article class="media content-section">
-                <div class="media-body">
-                  <div class="article-metadata">
-                    <a class="mr-2" href="#">9wa 9igga bosdike</a>
-                    <small class="text-muted">November 16,2020</small>
-                  </div>
-                  <h2><a class="article-title" href="#">Raghubar Das ki maa ka bhosda , Raghubar Das ki maa ki chut</a></h2>
-                  <p class="article-content">Corona kiya hai</p>
-                </div>
-              </article>
-    
-              <article class="media content-section">
-                <div class="media-body">
-                  <div class="article-metadata">
-                    <a class="mr-2" href="#">Tumlog CM ko har baar bhul jata hai</a>
-                    <small class="text-muted">August 3,2020</small>
-                  </div>
-                  <h2><a class="article-title" href="#">Paisa kama liye be</a></h2>
-                  <p class="article-content">Abe tumlog abhi tak golden rule nhi sikha hai</p>
-                </div>
-              </article>
-    
-              <article class="media content-section">
-                <div class="media-body">
-                  <div class="article-metadata">
-                    <a class="mr-2" href="#">Shubham Parteek Skp yo</a>
-                    <small class="text-muted">November 20,2020</small>
-                  </div>
-                  <h2><a class="article-title" href="#">Sonam(Hypo) chahiye yaar</a></h2>
-                  <p class="article-content">Is this his life ?</p>
-                </div>
-              </article>
-            </div>  
+            </article>
+            {%endfor%}
+            </div>
 
           <!-- Sidebar -->
             <div class="col-md-4">
               <br>
-              <div class="content-section">
+              <div class="content-section"id="content-section">
                 <h3>Our Sidebar</h3>
                 <p class='text-muted'>You can put any information here you'd like.
                   <ul class="list-group">
@@ -158,6 +156,7 @@
                     <li class="list-group-item list-group-item-light">etc</li>
                   </ul>
                 </p>
+                <button type="button" class="buttom" id="block" onclick="Choice()"><div id="write">Dark Theme</div></button>
               </div>
             </div>
       </main> 

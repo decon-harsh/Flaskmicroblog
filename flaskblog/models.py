@@ -14,12 +14,13 @@ class User(db.Model,UserMixin):
     id=db.Column(db.Integer,primary_key=True)
     username=db.Column(db.String(20),unique=True,nullable=False)
     email=db.Column(db.String(120),unique=True,nullable=False)
-    image_file=db.Column(db.String(20),default="Galaxy.png",nullable=False)
+    image_file=db.Column(db.String(20),default='defaultpic.jpeg',nullable=False)
     password=db.Column(db.String(60),nullable=False)
+    bio=db.Column(db.String(144),default="A Flaskblog user",nullable=False)
     posts=db.relationship('Post',backref='author',lazy=True)
 
     def __repr__(self):
-        return f"User('{self.username}','{self.image_file}','{self.email}')"
+        return f"User('{self.username}','{self.image_file}','{self.email}' ,'{self.bio}')"
 
 class Post(db.Model):
     id=db.Column(db.Integer,primary_key=True)

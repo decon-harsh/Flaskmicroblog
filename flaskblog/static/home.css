@@ -21,6 +21,16 @@ h1, h2, h3, h4, h5, h6 {
   
   .content-section {
     background: #ffffff;
+    /* background:black; */
+    padding: 10px 20px;
+    border: solid #dddddd;
+    border-radius: 0px;
+    margin-top: 0rem;
+    margin-bottom:0px ;
+  }
+  .content-section-dark {
+    /* background: #ffffff; */
+    background:black;
     padding: 10px 20px;
     border: solid #dddddd;
     border-radius: 0px;
@@ -31,13 +41,23 @@ h1, h2, h3, h4, h5, h6 {
   .article-title {
     color: #444444;
   }
+  .article-title-dark {
+    color: white;
+  }
   
   a.article-title:hover {
     color: #428bca;
     text-decoration: none;
   }
+  a.article-title-dark:hover {
+    color: yellowgreen;
+    text-decoration: none;
+  }
   
   .article-content {
+    white-space: pre-line;
+  }
+  .article-content-dark {
     white-space: pre-line;
   }
   
@@ -52,9 +72,20 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 4px;
     border-bottom: 1px solid #e3e3e3
   }
+  .article-metadata-dark {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+  }
   
   .article-metadata a:hover {
     color: #333;
+    /* color:yellow; */
+    text-decoration: none;
+  }
+  .article-metadata-dark a:hover {
+    /* color: #333; */
+    color:yellow;
     text-decoration: none;
   }
   
@@ -73,4 +104,18 @@ h1, h2, h3, h4, h5, h6 {
   
   .account-heading {
     font-size: 50rem;
+}
+.button{
+  border: none;
+  color: lightgreen;
+  margin-left: none;
+  display: flex;
+  align-self: flex-start;
+  outline: none;
+  cursor: pointer;
+  float: left;
+}
+.activated, .button:hover{
+  background-color: skyblue;
+   scale: 1.1; 
 }
