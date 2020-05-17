@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField,BooleanField
+from flask_wtf.file import FileField, FileAllowed
+from wtforms import StringField,PasswordField,SubmitField,BooleanField,TextAreaField,MultipleFileField
 from wtforms.validators import DataRequired,Length,Email,EqualTo,ValidationError
 from flaskblog.models import User
 import random
@@ -58,6 +59,7 @@ class UpdateAccountForm(FlaskForm):
     username=StringField("Username",validators=[DataRequired(),Length(min=2,max=20)])
     email=StringField("Email",validators=[DataRequired(),Email()])
     bio=StringField("Bio",validators=[Length(max=144)])
+    picture=FileField("Update profile picture", validators=[FileAllowed(['jpeg','jpg','png'])])
     submit=SubmitField('Update')
 
     def validate_username(self,username):
@@ -71,3 +73,10 @@ class UpdateAccountForm(FlaskForm):
             user=User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError(f"That email has already been registerd with us")
+
+
+class New_Post_Form(FlaskForm):
+    Caption=StringField("Title")
+    Photo=MultipleFileField("Add photos",validators=[FileAllowed(['jpeg','png','jpg'])])
+    Content=TextAreaField("Content",validators=[DataRequired()])
+    submit=SubmitField('Post')

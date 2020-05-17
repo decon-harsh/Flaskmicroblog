@@ -11,7 +11,7 @@
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
-    <link  rel="stylesheet"type="text/css" href="{{url_for('static',filename='main.css') }}">
+    <link  rel="stylesheet"type="text/css" href="{{url_for('static',filename='home.css') }}">
     <title>{{title}}</title>
   </head>
 <body>
@@ -44,6 +44,8 @@
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
                 {%if current_user.is_authenticated%}
+
+                <a class="nav-item nav-link" href="/new_post">New Post</a>
                 <a class="nav-item nav-link" href="/account">Account</a>
                 <a class="nav-item nav-link" href="/logout">Logout</a>
                 {%else%}
@@ -75,7 +77,7 @@
 
           <!-- Sidebar -->
             <div class="col-md-4">
-              <div class="content-section">
+              <div class="content-section" style="margin-top: 4.5rem;">
                 <h3>Our Sidebar</h3>
                 <p class='text-muted'>You can put any information here you'd like.
                   <ul class="list-group">

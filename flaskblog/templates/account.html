@@ -112,6 +112,7 @@
                     <!-- Navbar Right Side -->
                  <div class="navbar-nav">
                     {%if current_user.is_authenticated%}
+                    <a class="nav-item nav-link" href="/new_post">New Post</a>
                     <a class="nav-item nav-link" href="/account">Account</a>
                     <a class="nav-item nav-link" href="/logout">Logout</a>
                     {%else%}
@@ -144,12 +145,13 @@
             <div class="media-body">
               <h4 class="media-heading"><b>{{current_user.username|capitalize}}</b></h4>
               <div class="container"> 
-                <p><small style="font-weight: lighter;color: gray;"><a href="/update"> Bio</a></small></p>
+                <p><small style="font-weight: lighter;color: gray;"><u>Bio</u></small></p>
                 <p>{{current_user.bio|capitalize}}</p>
               </div>
             </div>
             <div class="media-right">
-              <img src= "{{image_file}}" class="img-thumbnail" style="height:135px;width:270px">
+              <img src= "{{image_file}}" class="rounded-circle account-img" style="margin-top:0.7rem;">
+              <!-- style="height:135px;width:270px" -->
             </div>
           </div>
         </div>
@@ -157,7 +159,7 @@
         <button id="open" class="close-button " onclick="hide('myForm');hideButton()">Done Updating!</button>
         <button id="close" class="open-button" onclick="show('myForm');showButton()">Update your details</button>
         <div class ="content-section">
-          <form method ="POST" action="" id="myForm" style="display: none;">
+          <form method ="POST" action="" enctype="multipart/form-data" id="myForm" style="display: none;">
               {{form.hidden_tag()}}
               <fieldset class="form-group">
                       <legend class="border-bottom mb-4">Update</legend>
@@ -192,6 +194,15 @@
                       <div class="form-group">
                         {{ form.bio.label(class="form-control-label")  }}
                         {{ form.bio(class="form-control form-control-lg")  }}
+                      </div>
+                      <div class="form-group">
+                        {{ form.picture.label()  }}
+                        {{ form.picture(class="form-control-file")  }}
+                        {%if form.picture.errors%}
+                          {%for error in form.picture.errors%}
+                            <span class="text-danger">{{error}}</span><br>
+                          {%endfor%} 
+                        {%endif%}  
                       </div>
               </fieldset>
               <div class="form-group">

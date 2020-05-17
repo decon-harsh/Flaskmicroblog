@@ -18,14 +18,15 @@
     body, html {
   height: 100%;
   width: 100%;
+  background-size:auto;
 }
 .bg-light {
   /* The image used */
-  background-image: url("/static/image/snowyhills.jpg");
+  background: url("/static/image/snowyhills.jpg");
   /* Full height */
   top: 0;
-  height: 111%;
-  width: 100%;
+  height:100vh;
+  width:100wh;
 
   /* Center and scale the image nicely */
   background-position: center;
@@ -36,7 +37,7 @@
   /* The image used */
   background-image: url("/static/image/hitmandark.jpg");
   /* Full height */
-  height: 111%;
+  height: 100vh;
   width: 100%;
 
   /* Center and scale the image nicely */
@@ -101,6 +102,7 @@ script{
               
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/new_post"><b><font color="white">New Post</font></b></a>
                 <a class="nav-item nav-link" href="/account"><b><font color="white">Account</font></b></a>
                 <a class="nav-item nav-link" href="/logout"><b><font color="white">Logout</font></b></a>
               </div>
