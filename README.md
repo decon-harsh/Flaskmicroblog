@@ -5,9 +5,9 @@ Requirements:
 4) Pillow     
 
 Installations:
-> Clone this repo<
-> Now move into this directory
-> $python3 run.py
+1) Clone this repo
+2) Now move into this directory
+3) $python3 run.py
 To not run into debug  mode:
-> open __init__.py
-> run.debug=FALSE
+1) open __init__.py
+2) run.debug=FALSE
