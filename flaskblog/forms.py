@@ -7,13 +7,7 @@ import random
 from flask_login import current_user
 
 # suggestion function 
-def suggestion(s):
-    s=str(s)
-    if s[-1].isdigit()==True:
-        s=s[:len(s)-1]+str(int(s[-1])+1)
-    else:
-        s=s[:len(s)]+str(random.randint(0,10))
-    return s
+
 
 #forms
 class Registration(FlaskForm):
