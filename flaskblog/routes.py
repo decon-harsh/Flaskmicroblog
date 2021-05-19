@@ -26,30 +26,6 @@ posts=[
         'content':"Third post content",
         'date':"April 30,2020"
     },
-    # {   
-    #     'author':"Raju Madharchod",
-    #     'title':"Vlog bnate hai",
-    #     'content':"Yaar 9wa BT mat de",
-    #     'date':"September 15,2020"
-    # },
-    # {
-    #     'author':"9wa 9igga bosdike",
-    #     'title':"Raghubar Das ki maa ka bhosda , Raghubar Das ki maa ki chut",
-    #     'content':"Corona kiya hai",
-    #     'date':"November 16,2020"
-    # },
-    # {
-    #     'author':"Tumlog CM ko har baar bhul jata hai",
-    #     'title':"Paisa kama liye be",
-    #     'content':"Abe tumlog abhi tak golden rule nhi sikha hai",
-    #     'date':"August 3,2020"
-    # },
-    # {
-    #     'author':"Shubham Parteek Skp yo",
-    #     'title':"Sonam(Hypo) chahiye yaar",
-    #     'content':"Is this his life ?",
-    #     'date':"November 20,2020"
-    # }
 ]
 
 
