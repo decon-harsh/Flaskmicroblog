@@ -4,7 +4,7 @@
      <!-- Required meta tags -->
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
- 
+
      <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -20,6 +20,7 @@
   width: 100%;
   background-size:auto;
 }
+......
 .bg-light {
   /* The image used */
   background: url("/static/image/snowyhills.jpg");
@@ -69,7 +70,7 @@ script{
   overflow: hidden;
   font-size: 12px;
   range: 1.1;
-}  
+}
 </style>
 <body>
   <div class="bg-light" id="theme">
@@ -99,7 +100,7 @@ script{
                 <a class="nav-item nav-link" href="/about"><b><font color="white">About</font></a>
               </div>
 
-              
+
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
                 <a class="nav-item nav-link" href="/new_post"><b><font color="white">New Post</font></b></a>
@@ -123,7 +124,7 @@ script{
                   <div class="alert alert-info alert-dismissible">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <strong>{{message}}</strong>
-                  </div>  
+                  </div>
                 {%endfor%}
               {%endif%}
               {%endwith%}
@@ -133,7 +134,7 @@ script{
               </div>
             {%for post in posts%}
             <article class="media content-section">
-                <div class="media-body"> 
+                <div class="media-body">
                   <div class="article-metadata">
                       <a class="mr-2" href="#">{{ post.author }}</a>
                       <small class="text-muted">{{ post.date }}</small>
@@ -161,7 +162,7 @@ script{
                 <button type="button" class="buttom" id="block" onclick="Choice()"><div id="write">Dark Theme</div></button>
               </div>
             </div>
-      </main> 
-  </div>   
+      </main>
+  </div>
 </body>
 </html>
